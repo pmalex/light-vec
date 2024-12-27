@@ -48,18 +48,12 @@ impl LightVec for Constant {
         vec![self.value; self.size]
     }
 
-    fn from_vec(vec: Vec<Int>) -> Self {
-        assert!(!vec.is_empty());
+    fn sum(&self) -> Int {
+        self.value * (self.size as Int)
+    }
 
-        let value = vec[0];
-        let size = vec.len();
-
-        assert!(
-            vec.into_iter().all(|v| v == value),
-            "Вектор содержит разные значения и не может быть преобразован в константный"
-        );
-
-        Self::new(value, size)
+    fn prod(&self) -> Int {
+        todo!()
     }
 }
 
@@ -73,5 +67,21 @@ impl Add for Constant {
             value: self.value + rhs.value,
             size: self.size,
         }
+    }
+}
+
+impl From<Vec<Int>> for Constant {
+    fn from(vec: Vec<Int>) -> Self {
+        assert!(!vec.is_empty());
+
+        let value = vec[0];
+        let size = vec.len();
+
+        assert!(
+            vec.into_iter().all(|v| v == value),
+            "Вектор содержит разные значения и не может быть преобразован в константный"
+        );
+
+        Self::new(value, size)
     }
 }

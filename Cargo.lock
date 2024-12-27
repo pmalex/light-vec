@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "vvec"
+name = "lightVec"
 version = "0.1.0"

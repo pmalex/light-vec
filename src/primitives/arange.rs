@@ -34,7 +34,11 @@ impl LightVec for ARange {
         self.start + (index * self.step) as Int
     }
 
-    fn from_vec(_vec: Vec<Int>) -> Self {
+    fn sum(&self) -> Int {
+        (self.start + self.end) * (self.size() as Int) / 2
+    }
+
+    fn prod(&self) -> Int {
         todo!()
     }
 }
@@ -60,5 +64,11 @@ mod test {
             vec![4, 7, 10, 13, 16, 19, 22]
         );
         assert_eq!(ARange::new(-9, 3, 4).to_vec(), vec![-9, -5, -1, 3]);
+    }
+
+    #[test]
+    fn sum_test() {
+        assert_eq!(ARange::new(7, 11, 2).sum(), 27);
+        assert_eq!(ARange::new(-3, 5, 2).sum(), 5);
     }
 }

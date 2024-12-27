@@ -14,6 +14,12 @@ pub trait LightVec {
     /// Возвращает элемент вектора, находящийся по переданному индексу.
     fn get(&self, index: usize) -> Int;
 
+    /// Возвращает сумму элементов вектора.
+    fn sum(&self) -> Int;
+
+    /// Возвращает произведение элементов вектора.
+    fn prod(&self) -> Int;
+
     /// Преобразовывает лёгкий вектор в тяжёлый.
     fn to_vec(self) -> Vec<Int>
     where
@@ -21,7 +27,4 @@ pub trait LightVec {
     {
         (0..self.size()).map(|index| self.get(index)).collect()
     }
-
-    /// Преобразовывает тяжёлый вектор в лёгкий.
-    fn from_vec(vec: Vec<Int>) -> Self;
 }
