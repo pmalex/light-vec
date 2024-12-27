@@ -3,29 +3,25 @@
 /// Тип данных, который имеют значения векторов.
 pub type Int = i32;
 
-pub mod constant;
-pub mod cycle;
-pub mod range;
+pub mod operations;
+pub mod primitives;
 
-/// Описывает общие свойства виртуального вектора.
+/// Описывает метода, общие для всех виртуальных векторов.
 pub trait LightVec {
-    /// Возвращает элемент вектора, содержащийся по переданному индексу.
+    /// Возвращает размер вектора.
+    fn size(&self) -> usize;
+
+    /// Возвращает элемент вектора, находящийся по переданному индексу.
     fn get(&self, index: usize) -> Int;
 
-    /// Разделяет вектор на две части по переданному индексу.
-    ///
-    /// # Паникует
-    /// если размер вектора равен 1 или же если индекс выходит за пределы размера вектора.
-    fn split_at(self, index: usize) -> (Self, Self)
+    /// Преобразовывает лёгкий вектор в тяжёлый.
+    fn to_vec(self) -> Vec<Int>
     where
-        Self: Sized;
+        Self: Sized,
+    {
+        (0..self.size()).map(|index| self.get(index)).collect()
+    }
 
-    /// Преобразовывает виртуальный вектор в реальный.
-    fn to_vec(self) -> Vec<Int>;
-
-    /// Объединяет два вектора.
-    fn concat<V1, V2>(self, vec: V1) -> V2
-    where
-        V1: LightVec,
-        V2: LightVec;
+    /// Преобразовывает тяжёлый вектор в лёгкий.
+    fn from_vec(vec: Vec<Int>) -> Self;
 }

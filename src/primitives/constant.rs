@@ -17,19 +17,12 @@ impl Constant {
 
         Self { value, size }
     }
-}
 
-impl LightVec for Constant {
-    fn get(&self, index: usize) -> Int {
-        assert!(index < self.size);
-
-        self.value
-    }
-
-    fn split_at(self, index: usize) -> (Self, Self)
-    where
-        Self: Sized,
-    {
+    /// Разделяет вектор на две части по переданному индексу.
+    ///
+    /// # Паникует
+    /// если размер вектора равен 1 или же если индекс выходит за пределы размера вектора.
+    pub fn split_at(self, index: usize) -> (Self, Self) {
         assert!(self.size > 1, "Impossible to split vector of size 1");
         assert!(index > 0 && index < self.size);
 
@@ -38,22 +31,24 @@ impl LightVec for Constant {
 
         (first, second)
     }
+}
+
+impl LightVec for Constant {
+    fn size(&self) -> usize {
+        self.size
+    }
+
+    fn get(&self, index: usize) -> Int {
+        assert!(index < self.size);
+
+        self.value
+    }
 
     fn to_vec(self) -> Vec<Int> {
         vec![self.value; self.size]
     }
 
-    fn concat<V1, V2>(self, _vec: V1) -> V2
-    where
-        V1: LightVec,
-        V2: LightVec,
-    {
-        todo!()
-    }
-}
-
-impl From<Vec<Int>> for Constant {
-    fn from(vec: Vec<Int>) -> Self {
+    fn from_vec(vec: Vec<Int>) -> Self {
         assert!(!vec.is_empty());
 
         let value = vec[0];
