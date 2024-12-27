@@ -12,10 +12,21 @@ pub struct Constant {
 }
 
 impl Constant {
+    /// Создаёт константный вектор указанного размера.
     pub fn new(value: Int, size: usize) -> Self {
         assert!(size > 0);
 
         Self { value, size }
+    }
+
+    /// Создаёт нулевой вектор указанного размера.
+    pub fn zeros(size: usize) -> Self {
+        Self::new(0, size)
+    }
+
+    /// Создаёт единичный вектор указанного размера.
+    pub fn ones(size: usize) -> Self {
+        Self::new(1, size)
     }
 
     /// Разделяет вектор на две части по переданному индексу.
@@ -53,7 +64,7 @@ impl LightVec for Constant {
     }
 
     fn product(&self) -> Int {
-        todo!()
+        self.value.pow(self.size as u32)
     }
 }
 

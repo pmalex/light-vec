@@ -1,6 +1,6 @@
 use crate::{Int, LightVec};
 
-/// Объединяет два вектора.
+/// Объединяет два вектора в один последовательный.
 pub struct Concat<V1: LightVec, V2: LightVec>(pub V1, pub V2);
 
 impl<V1, V2> LightVec for Concat<V1, V2>

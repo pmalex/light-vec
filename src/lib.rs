@@ -4,7 +4,7 @@
 pub type Int = i32;
 
 pub mod operations;
-pub mod primitives;
+pub mod vectors;
 
 /// Описывает метода, общие для всех виртуальных векторов.
 pub trait LightVec {

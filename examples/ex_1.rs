@@ -2,7 +2,7 @@
 
 use light_vec::{
     operations::{Concat, Inverse},
-    primitives::{Arange, Constant},
+    vectors::{Arange, Constant},
     LightVec,
 };
 

@@ -1,14 +1,14 @@
 use crate::{Int, LightVec};
 
 /// Циклически повторяет другой вектор.
-pub struct Cycle<V: LightVec> {
+pub struct Repeat<V: LightVec> {
     vec: V,
 
     /// Сколько раз повторять вектор.
     count: usize,
 }
 
-impl<V: LightVec> Cycle<V> {
+impl<V: LightVec> Repeat<V> {
     pub fn new(vec: V, count: usize) -> Self {
         assert!(count > 0);
 
@@ -16,7 +16,7 @@ impl<V: LightVec> Cycle<V> {
     }
 }
 
-impl<V: LightVec> LightVec for Cycle<V> {
+impl<V: LightVec> LightVec for Repeat<V> {
     fn size(&self) -> usize {
         self.vec.size() * self.count
     }
@@ -30,6 +30,6 @@ impl<V: LightVec> LightVec for Cycle<V> {
     }
 
     fn product(&self) -> Int {
-        todo!()
+        self.vec.product().pow(self.count as u32)
     }
 }
