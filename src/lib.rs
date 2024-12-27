@@ -18,7 +18,7 @@ pub trait LightVec {
     fn sum(&self) -> Int;
 
     /// Возвращает произведение элементов вектора.
-    fn prod(&self) -> Int;
+    fn product(&self) -> Int;
 
     /// Преобразовывает лёгкий вектор в тяжёлый.
     fn to_vec(self) -> Vec<Int>

@@ -26,7 +26,7 @@ where
         self.0.sum() + self.1.sum()
     }
 
-    fn prod(&self) -> Int {
+    fn product(&self) -> Int {
         todo!()
     }
 }

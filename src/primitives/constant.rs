@@ -3,9 +3,9 @@ use std::ops::Add;
 use crate::{Int, LightVec};
 
 #[derive(Debug)]
-/// Вектор, содержащий фиксированное значение.
+/// Вектор, все элементы которого равны.
 pub struct Constant {
-    value: Int,
+    pub value: Int,
 
     /// Длина вектора
     size: usize,
@@ -52,19 +52,30 @@ impl LightVec for Constant {
         self.value * (self.size as Int)
     }
 
-    fn prod(&self) -> Int {
+    fn product(&self) -> Int {
         todo!()
     }
 }
 
-impl Add for Constant {
-    type Output = Self;
+impl Add<Constant> for Constant {
+    type Output = Constant;
 
-    fn add(self, rhs: Self) -> Self::Output {
+    fn add(self, rhs: Constant) -> Constant {
         assert_eq!(self.size, rhs.size);
 
         Self {
             value: self.value + rhs.value,
+            size: self.size,
+        }
+    }
+}
+
+impl Add<Int> for Constant {
+    type Output = Constant;
+
+    fn add(self, rhs: Int) -> Self::Output {
+        Constant {
+            value: self.value + rhs,
             size: self.size,
         }
     }

@@ -29,7 +29,7 @@ impl<V: LightVec> LightVec for Cycle<V> {
         self.vec.sum() * self.count as Int
     }
 
-    fn prod(&self) -> Int {
+    fn product(&self) -> Int {
         todo!()
     }
 }

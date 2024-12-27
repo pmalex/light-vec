@@ -16,7 +16,7 @@ impl<V: LightVec> LightVec for Inverse<V> {
         self.0.sum()
     }
 
-    fn prod(&self) -> Int {
-        self.0.prod()
+    fn product(&self) -> Int {
+        self.0.product()
     }
 }
