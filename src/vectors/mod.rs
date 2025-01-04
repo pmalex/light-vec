@@ -1,13 +1,15 @@
+use crate::LightVec;
 use std::ops::Add;
 
 pub use arange::Arange;
 pub use constant::Constant;
-
-use crate::LightVec;
+pub use heavy::Heavy;
+pub use random::RandomVec;
 
 pub mod arange;
 pub mod constant;
-pub mod vec;
+pub mod heavy;
+pub mod random;
 
 //
 // Arange + Constant = Arange

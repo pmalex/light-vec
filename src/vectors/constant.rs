@@ -55,7 +55,7 @@ impl LightVec for Constant {
         self.value
     }
 
-    fn to_vec(self) -> Vec<Int> {
+    fn to_vec(&self) -> Vec<Int> {
         vec![self.value; self.size]
     }
 

@@ -2,7 +2,9 @@
 
 use crate::{Int, LightVec};
 
-impl LightVec for Vec<Int> {
+pub type Heavy = Vec<Int>;
+
+impl LightVec for Heavy {
     fn size(&self) -> usize {
         self.len()
     }
