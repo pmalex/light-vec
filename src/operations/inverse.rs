@@ -1,9 +1,9 @@
 use crate::{Int, LightVec};
 
 /// Обращает порядок следования элементов вектора.
-pub struct Inverse<V: LightVec>(pub V);
+pub struct Inverse<LV: LightVec>(pub LV);
 
-impl<V: LightVec> LightVec for Inverse<V> {
+impl<LV: LightVec> LightVec for Inverse<LV> {
     fn size(&self) -> usize {
         self.0.size()
     }

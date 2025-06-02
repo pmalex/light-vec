@@ -2,6 +2,7 @@
 
 use crate::{Int, LightVec};
 
+/// Тяжёлый вектор = обычный вектор
 pub type Heavy = Vec<Int>;
 
 impl LightVec for Heavy {

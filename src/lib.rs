@@ -21,7 +21,7 @@ pub trait LightVec {
     fn product(&self) -> Int;
 
     /// Преобразовывает лёгкий вектор в тяжёлый.
-    fn to_vec(&self) -> vectors::Heavy
+    fn to_heavy(&self) -> vectors::Heavy
     where
         Self: Sized,
     {

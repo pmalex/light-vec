@@ -11,5 +11,5 @@ fn main() {
     let vec_2 = Arange::new(1, 9, 2);
     let vec_3 = vec![8, 7, 1];
 
-    dbg!(Concat(Inverse(vec_2 + vec_1), vec_3).to_vec());
+    dbg!(Concat(Inverse(vec_2 + vec_1), vec_3).to_heavy());
 }

@@ -4,12 +4,12 @@ use std::ops::Add;
 pub use arange::Arange;
 pub use constant::Constant;
 pub use heavy::Heavy;
-pub use random::RandomVec;
+// pub use random::RandomVec;
 
 pub mod arange;
 pub mod constant;
 pub mod heavy;
-pub mod random;
+// pub mod random;
 
 //
 // Arange + Constant = Arange

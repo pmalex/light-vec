@@ -2,7 +2,7 @@ use std::ops::Add;
 
 use crate::{Int, LightVec};
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 /// Вектор, все элементы которого равны.
 pub struct Constant {
     pub value: Int,
@@ -55,7 +55,7 @@ impl LightVec for Constant {
         self.value
     }
 
-    fn to_vec(&self) -> Vec<Int> {
+    fn to_heavy(&self) -> Vec<Int> {
         vec![self.value; self.size]
     }
 
@@ -105,5 +105,18 @@ impl From<Vec<Int>> for Constant {
         );
 
         Self::new(value, size)
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use crate::vectors::Constant;
+
+    #[test]
+    fn add() {
+        let lv1 = Constant::new(3, 100);
+        let lv2 = Constant::new(8, 100);
+
+        assert_eq!(lv1 + lv2, Constant::new(11, 100));
     }
 }

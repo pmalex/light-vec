@@ -21,11 +21,11 @@ impl<V: LightVec> LightVec for Repeat<V> {
         self.vec.size() * self.count
     }
 
-    fn get(&self, _index: usize) -> crate::Int {
+    fn get(&self, _index: usize) -> Int {
         todo!()
     }
 
-    fn sum(&self) -> crate::Int {
+    fn sum(&self) -> Int {
         self.vec.sum() * self.count as Int
     }
 

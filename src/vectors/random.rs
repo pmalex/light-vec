@@ -14,9 +14,9 @@ impl RandomValue {
         Self { min, max }
     }
 
-    /// Вскрывает значение случайной величины.
-    pub fn collapse(&self) -> Int {
-        rand::thread_rng().gen_range(self.min..=self.max)
+    /// Вскрывает значение случайной величины, уничтожая её.
+    pub fn collapse(self) -> Int {
+        rand::rng().random_range(self.min..=self.max)
     }
 }
 
@@ -70,7 +70,9 @@ impl RandomVec {
 
 impl Into<Vec<Int>> for RandomVec {
     fn into(self) -> Vec<Int> {
-        (0..self.size).map(|_| self.value.collapse()).collect()
+        (0..self.size)
+            .map(|_| self.value.clone().collapse())
+            .collect()
     }
 }
 
@@ -84,7 +86,9 @@ mod test {
         let light_vec = RandomVec::new(-2, 9, 10);
         let light_vec_sum = light_vec.sum();
 
-        let ys: Vec<Int> = (0..10_000).map(|_| light_vec_sum.collapse()).collect();
+        let ys: Vec<Int> = (0..10_000)
+            .map(|_| light_vec_sum.clone().collapse())
+            .collect();
         let ys_mean = mean(&ys);
         dbg!(ys_mean);
 

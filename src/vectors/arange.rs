@@ -100,12 +100,12 @@ mod test {
 
     #[test]
     fn to_vec_test() {
-        assert_eq!(Arange::new(-3, 3, 1).to_vec(), vec![-3, -2, -1, 0, 1, 2, 3]);
+        assert_eq!(Arange::new(-3, 3, 1).to_heavy(), vec![-3, -2, -1, 0, 1, 2, 3]);
         assert_eq!(
-            Arange::new(4, 22, 3).to_vec(),
+            Arange::new(4, 22, 3).to_heavy(),
             vec![4, 7, 10, 13, 16, 19, 22]
         );
-        assert_eq!(Arange::new(-9, 3, 4).to_vec(), vec![-9, -5, -1, 3]);
+        assert_eq!(Arange::new(-9, 3, 4).to_heavy(), vec![-9, -5, -1, 3]);
     }
 
     #[test]

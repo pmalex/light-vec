@@ -1,9 +1,10 @@
 use crate::LightVec;
 
+#[allow(dead_code)]
 /// Разжижает вектор.
 ///
 /// Пример для `dilation = 2`:
-/// ```
+/// ```text
 /// [1, 2, 3] -> [1, 0, 0, 2, 0, 0, 3]
 /// ```
 pub struct Dilation<V: LightVec> {
